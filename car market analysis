@@ -1,0 +1,18 @@
+
+import pandas as pd
+from sklearn.model_selection import train_test_split from sklearn.preprocessing import LabelEncoder
+# datasets into a data frame,
+df = pd.read_csv("car_market_analysis.csv")
+le = LabelEncoder()
+df['car_ID'] = le.fit_transform(df['car_ID'])
+# all categorical variables converted into numerical labels df['symboling'] = le.fit_transform(df['symboling']) df['CarName'] = le.fit_transform(df['CarName']) df['fueltype'] = le.fit_transform(df['fueltype']) df['aspiration'] = le.fit_transform(df['aspiration']) df['doornumber'] = le.fit_transform(df['doornumber']) df['fueltype'] = le.fit_transform(df['fueltype'])
+df['carbody'] = le.fit_transform(df['carbody'])
+df['drivewheel'] = le.fit_transform(df['drivewheel']) df['enginelocation'] = le.fit_transform(df['enginelocation']) df['enginesize'] = le.fit_transform(df['enginesize']) df['fuelsystem'] = le.fit_transform(df['fuelsystem']) df['boreratio'] = le.fit_transform(df['boreratio'])
+df['stroke'] = le.fit_transform(df['stroke'])
+df['compressionratio'] = le.fit_transform(df['compressionratio'])
+df['horsepower'] = le.fit_transform(df['horsepower']) df['peakrpm'] = le.fit_transform(df['peakrpm']) df['citympg'] = le.fit_transform(df['citympg']) df['highwaympg'] = le.fit_transform(df['highwaympg'])
+# all attributes besides the carID and price as our input features. X = df.drop(['car_ID', 'price'], axis=1)
+y = df['price']
+# datasets divided in training and test set with 80/20 proportion
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+# summary of datasets summary = df.describe() print(summary)

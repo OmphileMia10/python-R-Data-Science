@@ -1,0 +1,11 @@
+import matplotlib.pyplot as plt import numpy as np
+# R-squared for the training set r2_train = model.score(X_train, y_train)
+# R-squared for the test set
+r2_test = model.score(X_test, y_test)
+# Plot of the goodness of fit curve
+plt.scatter(y_train, model.predict(X_train), color='blue', label='Training data') plt.scatter(y_test, model.predict(X_test), color='yellow', label='Test data') plt.plot([min(y_train), max(y_train)], [min(y_train), max(y_train)], color='red') # Perfect fit line plt.xlabel('Actual Price')
+plt.ylabel('Predicted Price')
+plt.title('Goodness of Fit')
+plt.legend()
+plt.show()
+print("R-squared (Training):", r2_train) print("R-squared (Test):", r2_test)
